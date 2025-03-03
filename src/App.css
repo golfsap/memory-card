@@ -1,27 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
+
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  font-family: "Goldman", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 30px;
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
   text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 5px;
+}
+
+p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.scoreContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.scoreContainer p:first-child {
+  border-bottom: 1px solid;
 }
 
 .cardContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  background-color: #f3f4f6;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 img {
-  width: 200px;
+  width: 100%;
+  object-fit: cover;
+  height: 220px;
 }
 
 .card {
-  border: 1px solid;
+  position: relative;
+  border: 2px solid transparent;
+  background-color: var(--cream-color);
+  padding: 7px;
+  border-radius: 7px;
+  color: black;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
 }
 
+/* .card h2 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background: var(--blue-color);
+  color: white;
+  width: 100%;
+  padding: 14px 0;
+  transform: translateX(-50%) translateY(100%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover h2 {
+  transform: translateX(-50%) translateY(0);
+} */
+
 .card:hover {
-  /* border: 2px solid; */
-  border-bottom: 2px solid;
-  background-color: lightblue;
+  background-color: var(--blue-color);
+  color: var(--cream-color);
+  /* border-color: var(--blue-color); */
+  box-shadow: 0 0 10px 0px var(--blue-color);
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  header {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+}
+
+@media (hover: none) {
+  .card:hover {
+    background-color: var(--cream-color);
+    color: black;
+    border-color: initial;
+    box-shadow: none;
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.9),
+      0 0 15px rgba(255, 215, 0, 0.6);
+  }
+
+  100% {
+    text-shadow: none;
+  }
+}
+
+.glow {
+  animation: glow 1s ease-in-out;
 }
