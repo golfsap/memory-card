@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import cardsData from "./data";
 import "./App.css";
+import fetchDisneyCharacters from "./helper";
 
 function App() {
   const [clickedCards, setClickedCards] = useState<string[]>([]);
@@ -9,6 +10,7 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [cards, setCards] = useState([...cardsData]);
   const [glow, setGlow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const shuffleCards = (cardsArray: typeof cardsData) => {
     const shuffled = [...cardsArray];
@@ -32,12 +34,21 @@ function App() {
       setCurrentScore(0);
       setClickedCards([]);
     }
-    setCards(shuffleCards(cardsData));
+    setCards((prev) => shuffleCards(prev));
+  };
+
+  const loadCharacters = async () => {
+    setLoading(true);
+    const newCards = await fetchDisneyCharacters();
+
+    if (newCards.length > 0) {
+      setCards(newCards);
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
     setCards(shuffleCards(cardsData));
-    console.log("Shuffling cards on mount");
   }, []);
 
   useEffect(() => {
@@ -51,7 +62,9 @@ function App() {
     <>
       <header>
         <div className="titleContainer">
-          <h1>Memory card game</h1>
+          <h1>
+            <span className="highlight">(Disney)</span> Memory card game
+          </h1>
           <p>Rules: don't click the same card twice!</p>
         </div>
         <div className="scoreContainer">
@@ -69,6 +82,10 @@ function App() {
           />
         ))}
       </section>
+      <div className="newCharacters">
+        <button onClick={loadCharacters}>Get new characters</button>
+        {loading && <p>Loading...</p>}
+      </div>
     </>
   );
 }

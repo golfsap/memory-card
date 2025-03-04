@@ -21,6 +21,10 @@ header {
   flex-direction: column;
 }
 
+.highlight {
+  color: var(--highlight-color);
+}
+
 h1 {
   font-weight: 700;
   font-size: 30px;
@@ -67,6 +71,7 @@ img {
 
 .card {
   position: relative;
+  max-width: 250px;
   border: 2px solid transparent;
   background-color: var(--cream-color);
   padding: 7px;
@@ -98,6 +103,31 @@ img {
   /* border-color: var(--blue-color); */
   box-shadow: 0 0 10px 0px var(--blue-color);
   cursor: pointer;
+}
+
+.newCharacters {
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  & > button {
+    background-color: var(--cream-color);
+    color: black;
+    border: 2px solid var(--cream-color);
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 7px 10px;
+    font-weight: 400;
+  }
+
+  & > button:hover {
+    background-color: var(--blue-color);
+    color: var(--cream-color);
+  }
 }
 
 @media (max-width: 560px) {
