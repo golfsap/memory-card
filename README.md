@@ -9,7 +9,7 @@ Play the game: [Live Demo](https://disney-sidekicks-memory-game.netlify.app)
 - Randomized Disney characters fetched from an API
 - Score tracking with best score updates
 - Dynamic card shuffling after each selection
-- Image validatioin to prevent broken image links
+- Image valiidation to prevent broken image links
 - Responsive design for desktop and mobile devices
 
 ## Technologies Used

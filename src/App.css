@@ -81,26 +81,9 @@ img {
   overflow: hidden;
 }
 
-/* .card h2 {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  background: var(--blue-color);
-  color: white;
-  width: 100%;
-  padding: 14px 0;
-  transform: translateX(-50%) translateY(100%);
-  transition: transform 0.2s ease-in-out;
-}
-
-.card:hover h2 {
-  transform: translateX(-50%) translateY(0);
-} */
-
 .card:hover {
   background-color: var(--blue-color);
   color: var(--cream-color);
-  /* border-color: var(--blue-color); */
   box-shadow: 0 0 10px 0px var(--blue-color);
   cursor: pointer;
 }
@@ -131,12 +114,40 @@ img {
 }
 
 @media (max-width: 560px) {
+  #root {
+    padding: 1rem;
+  }
+
   header {
     flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
   }
 
   h1 {
-    font-size: 27px;
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  h2 {
+    font-size: 9px;
+    padding: 2px;
+  }
+
+  img {
+    height: 100px;
+  }
+
+  .cardContainer {
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    padding: 5px;
   }
 }
 

@@ -1,8 +1,3 @@
-// interface DisneyCharacter {
-//   name: string;
-//   imageUrl: string;
-// }
-
 const isValidImage = async (url: string): Promise<boolean> => {
   try {
     const response = await fetch(url, { method: "HEAD" });
@@ -27,7 +22,7 @@ const fetchDisneyCharacters = async () => {
     const validCharacters = [];
 
     for (const char of shuffled) {
-      if (validCharacters.length >= 16) break;
+      if (validCharacters.length >= 12) break;
 
       if (char.imageUrl) {
         const isValid = await isValidImage(char.imageUrl);
